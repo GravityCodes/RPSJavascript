@@ -1,23 +1,4 @@
-/*
-INIT computerChoice function.
-    GENERATE random number variable for choice.
-    IF random number variable is less than .33 THEN
-        RETURN Scissor
-    ELSE IF random number variable is greater or equal to .34 AND less than .66 THEN
-        RETURN Rock
-    ElSE
-        Return Paper
-    ENDIF
-*/
-
-//Scores for players
-let humanScore = 0
-let computerScore = 0
-
-
-
-
-//INIT computerChoice function.
+//INIT computerChoicepar function.
 function getComputerChoice() {
     //GENERATE random number variable for choice.
     const randomNumber = Math.random();
@@ -36,47 +17,63 @@ function getComputerChoice() {
 
 //INIT getHumanChoice function
 function getHumanChoice() {
-    humanChoiceanswer = prompt("Type Rock, paper, or scissor");
+    humanChoiceAnswer = prompt("Type Rock, paper, or scissor");
     
-    return humanChoiceanswer.toLowerCase()
+    return humanChoiceAnswer.toLowerCase()
 }
 
-const humanChoice = getHumanChoice()
-const computerChoice = getComputerChoice()
+function playGame() {
+    //Scores for players
+    let humanScore = 0
+    let computerScore = 0
 
-//INIT playRound function
-function playRound(humanChoicepar, computerChoicepar){
+    let rounds = 0
 
-    console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}`)
+    //INIT playRound function
+    function playRound(humanChoicepar, computerChoicepar){
 
-    if(humanChoice === 'rock' && computerChoice === 'paper') {
-        console.log("You have won this round!")
-        humanScore += 1
-    }
-    else if(humanChoice === 'paper' && computerChoice === 'rock') {
-        console.log("The computer has won this round!")
-        computerScore += 1
-    }
-    else if(humanChoice === "scissor" && computerChoice === "paper") {
-        console.log("You have won this round!")
-        humanScore += 1
-    }
-    else if(humanChoice === "paper" && computerChoice === "scissor") {
-        console.log("The Computer has won this round!")
-        computerScore += 1
-    }
-    else if(humanChoice === "scissor" && computerChoice === "rock") {
-        console.log("The computer has won this round")
-        computerScore += 1
-    }
-    else if(humanChoice === "rock" && computerChoice === "scissor") {
-        console.log("You have won this round")
-        humanScore += 1
+        console.log(`You chose ${humanChoicepar} and the computer chose ${computerChoicepar}`)
+
+        if(humanChoicepar === 'rock' && computerChoicepar === 'paper') {
+            console.log("You have won this round!")
+            humanScore += 1
+        }
+        else if(humanChoicepar === 'paper' && computerChoicepar === 'rock') {
+            console.log("You have won this round!")
+            humanScore += 1
+        }
+        else if(humanChoicepar === "scissor" && computerChoicepar === "paper") {
+            console.log("You have won this round!")
+            humanScore += 1
+        }
+        else if(humanChoicepar === "paper" && computerChoicepar === "scissor") {
+            console.log("The Computer has won this round!")
+            computerScore += 1
+        }
+        else if(humanChoicepar === "scissor" && computerChoicepar === "rock") {
+            console.log("The computer has won this round")
+            computerScore += 1
+        }
+        else if(humanChoicepar === "rock" && computerChoicepar === "scissor") {
+            console.log("You have won this round")
+            humanScore += 1
+        }
+        else if(humanChoicepar === computerChoicepar) {
+            console.log("It's a tie!")
+        }
+
+        console.log(`Score: You - ${humanScore} Computer - ${computerScore} `)
     }
 
-    console.log(`Score: You - ${humanScore} Computer - ${computerScore} `)
+    while (rounds < 5) {
+        const humanChoice = getHumanChoice()
+        const computerChoice = getComputerChoice()
+        playRound(humanChoice, computerChoice)
+
+        rounds += 1;
+    }
+
+    
 }
 
-
-
-playRound(humanChoice, computerChoice)
+playGame()
