@@ -15,12 +15,10 @@ function getComputerChoice() {
 
 }
 
-//INIT getHumanChoice function
-function getHumanChoice() {
-    humanChoiceAnswer = prompt("Type Rock, paper, or scissor");
-    
-    return humanChoiceAnswer.toLowerCase()
-}
+
+const buttons = document.querySelectorAll('button');
+
+
 
 function playGame() {
     //Scores for players
@@ -64,11 +62,12 @@ function playGame() {
 
         console.log(`Score: You - ${humanScore} Computer - ${computerScore} `)
     }
-
-    const rockBtn = document.querySelector("#rock")
-    const paperBtn = document.querySelector("#paper")
-    const scissorBtn = document.querySelector("#scissor")
+    
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => playRound(button.id, getComputerChoice()));
+    });
     
 }
+
 
 playGame()
