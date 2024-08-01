@@ -1,4 +1,4 @@
-//INIT computerChoicepar function.
+//INIT computerChoicePar function.
 function getComputerChoice() {
     //GENERATE random number variable for choice.
     const randomNumber = Math.random();
@@ -17,52 +17,57 @@ function getComputerChoice() {
 
 
 const buttons = document.querySelectorAll('button');
+const resultsP = document.querySelector("p");
+const resultsDiv = document.querySelector("#results")
+const computerChoiceImg = document.createElement("img");
 
-
+resultsP.setAttribute('style', 'white-space: pre;');
 
 function playGame() {
     //Scores for players
     let humanScore = 0
     let computerScore = 0
 
-    let rounds = 0
 
     //INIT playRound function
-    function playRound(humanChoicepar, computerChoicepar){
+    function playRound(humanChoicepar, computerChoicePar){
 
-        console.log(`You chose ${humanChoicepar} and the computer chose ${computerChoicepar}`)
+        resultsP.textContent = `You chose ${humanChoicepar} and the computer chose ${computerChoicePar}`
 
-        if(humanChoicepar === 'rock' && computerChoicepar === 'paper') {
-            console.log("You have won this round!")
+        if(humanChoicepar === 'rock' && computerChoicePar === 'paper') {
+            resultsP.textContent += "\r\n You have won this round! "
             humanScore += 1
         }
-        else if(humanChoicepar === 'paper' && computerChoicepar === 'rock') {
-            console.log("You have won this round!")
+        else if(humanChoicepar === 'paper' && computerChoicePar === 'rock') {
+            resultsP.textContent += "\r\n You have won this round! "
             humanScore += 1
         }
-        else if(humanChoicepar === "scissor" && computerChoicepar === "paper") {
-            console.log("You have won this round!")
+        else if(humanChoicepar === "scissor" && computerChoicePar === "paper") {
+            resultsP.textContent += "\r\n You have won this round! "
             humanScore += 1
         }
-        else if(humanChoicepar === "paper" && computerChoicepar === "scissor") {
-            console.log("The Computer has won this round!")
+        else if(humanChoicepar === "paper" && computerChoicePar === "scissor") {
+            resultsP.textContent += "\r\n The Computer has won this round! "
             computerScore += 1
         }
-        else if(humanChoicepar === "scissor" && computerChoicepar === "rock") {
-            console.log("The computer has won this round")
+        else if(humanChoicepar === "scissor" && computerChoicePar === "rock") {
+            resultsP.textContent +=  "\r\n The computer has won this round "
             computerScore += 1
         }
-        else if(humanChoicepar === "rock" && computerChoicepar === "scissor") {
-            console.log("You have won this round")
+        else if(humanChoicepar === "rock" && computerChoicePar === "scissor") {
+            resultsP.textContent += "\r\n You have won this round "
             humanScore += 1
         }
-        else if(humanChoicepar === computerChoicepar) {
-            console.log("It's a tie!")
+        else if(humanChoicepar === computerChoicePar) {
+            resultsP.textContent += "\r\n It's a tie! "
         }
 
-        console.log(`Score: You - ${humanScore} Computer - ${computerScore} `)
+        resultsP.textContent += `\r\n Score: You - ${humanScore} Computer - ${computerScore} `
+        computerChoiceImg.src = `./img/${computerChoicePar}.png`
+        resultsDiv.appendChild(computerChoiceImg)
     }
     
+
     buttons.forEach((button) => {
         button.addEventListener('click', () => playRound(button.id, getComputerChoice()));
     });

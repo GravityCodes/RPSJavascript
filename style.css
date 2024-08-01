@@ -1,16 +1,35 @@
 body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
+    font-family: Rubik, "Open Sans";
+}
+
+#results {
+    display: flex;
+    height: 300px;
+    width: 1000px;
+    border: 10px solid black; 
+    margin-top: 50px;
+    justify-content: center;
+}
+
+#results p {
+    font-size: 22px;
+    text-align: center;
 }
 
 #choices {
-    height: 100vh;
+    height: 300px;
     width: 100vw;
 
     display: flex;
     justify-content: center;
     align-items: center;
     
-
+    margin-top: 200px;
 }
 
 #choices button {
