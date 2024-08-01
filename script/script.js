@@ -65,14 +65,9 @@ function playGame() {
         console.log(`Score: You - ${humanScore} Computer - ${computerScore} `)
     }
 
-    while (rounds < 5) {
-        const humanChoice = getHumanChoice()
-        const computerChoice = getComputerChoice()
-        playRound(humanChoice, computerChoice)
-
-        rounds += 1;
-    }
-
+    const rockBtn = document.querySelector("#rock")
+    const paperBtn = document.querySelector("#paper")
+    const scissorBtn = document.querySelector("#scissor")
     
 }
 
